@@ -21,12 +21,14 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
+Route::get('/', 'HttpController@index');
+Route::get('/http/get', 'HttpController@get');
+Route::post('/http/post', 'HttpController@post');
 Route::group(['middleware' => ['web']], function () {
 
-    Route::get('/', function () {
-        return view('welcome');
-    })->middleware('guest');
+    // Route::get('/', function () {
+    //     return view('welcome');
+    // })->middleware('guest');
 
     Route::get('/tasks', 'TaskController@index');
     Route::post('/task', 'TaskController@store');
